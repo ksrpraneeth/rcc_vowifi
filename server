@@ -1,0 +1,92 @@
+import java.net.*;
+import java.io.*;
+import java.util.*;
+
+public class Server {
+public static String match(String phno)
+{
+String phno1=phno;
+
+
+String currentLine;
+BufferedReader br = new BufferedReader(new FileReader("routertable.txt"));
+while ((currentLine = br.readLine()) != null)
+{
+String sub = currentLine.substring(0,10);
+
+if(sub.equals(phno))
+{
+
+return currentLine;
+}
+else
+continue;
+}
+return null;
+}
+
+public static void main(String args[]) {
+try
+{
+DatagramSocket aSocket = null;
+try {
+aSocket = new DatagramSocket(8117);
+byte[] buffer = new byte[30];
+while(true)
+{
+
+DatagramPacket request = new DatagramPacket(buffer, buffer.length);
+aSocket.receive(request);
+//convert to string
+
+String s = new String(request.getData());
+String a="##";
+String b="**";
+//tokenize
+int count=0;
+byte[] toSource=null;
+StringTokenizer st2 = new StringTokenizer(s,",");
+while (st2.hasMoreElements())
+{
+if(count==0)
+{
+a=st2.nextElement().toString();
+count++;
+}
+else
+{
+b=st2.nextElement().toString();
+
+count=0;
+}
+
+//byte toDestination = match(a).getBytes();
+}
+String asdf=match(b);
+toSource = asdf.getBytes();
+DatagramPacket forsource = new
+DatagramPacket(toSource,toSource.length,request.getAddress(),
+request.getPort());
+aSocket.send(forsource);
+//writer.close();
+
+}
+}
+catch (SocketException e)
+{
+System.out.println("Socket: " + e.getMessage());
+}
+catch (IOException e)
+{
+System.out.println("IO: " + e.getMessage());
+}
+finally
+{
+if(aSocket != null) aSocket.close();
+}
+} catch(Exception e)
+{
+e.printStackTrace();
+}
+}
+}

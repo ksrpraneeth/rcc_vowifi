@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    >
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:text="udp stream"
+    />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnSend" android:text="send to s3" />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnRecv" android:text="Receive from zte" />
+    <Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/btnStrmic" android:text="stream micphone" />
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="send to zte" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="receive from s3" />
+
+    <Button
+        android:id="@+id/button3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="call" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="receive" />
+    
+</LinearLayout>
